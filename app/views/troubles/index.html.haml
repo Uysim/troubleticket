@@ -1,0 +1,24 @@
+%p#notice= notice
+%h1 Troubles
+%table.table
+  %thead
+    %tr
+      %th Client
+      %th User
+      %th Range
+      %th State
+      %th Detail
+      %th{:colspan => "3"}
+  %tbody
+    - @troubles.each do |trouble|
+      %tr
+        %td= trouble.client
+        %td= trouble.user
+        %td= trouble.range
+        %td= trouble.state
+        %td= trouble.detail
+        %td= link_to 'Show', trouble
+        %td= link_to 'Edit', edit_trouble_path(trouble)
+        %td= link_to 'Destroy', trouble, method: :delete, data: { confirm: 'Are you sure?' }
+%br/
+= link_to 'New Trouble', new_trouble_path

@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Name:
+  = @client.name
+%p
+  %strong Id number:
+  = @client.id_number
+%p
+  %strong Phone:
+  = @client.phone
+%p
+  %strong Email:
+  = @client.email
+%p
+  %strong Address:
+  = @client.address
+= link_to 'Edit', edit_client_path(@client)
+|
+= link_to 'Back', clients_path

@@ -1,0 +1,19 @@
+%p#notice= notice
+%p
+  %strong Client:
+  = @trouble.client
+%p
+  %strong User:
+  = @trouble.user
+%p
+  %strong Range:
+  = @trouble.range
+%p
+  %strong State:
+  = @trouble.state
+%p
+  %strong Detail:
+  = @trouble.detail
+= link_to 'Edit', edit_trouble_path(@trouble)
+|
+= link_to 'Back', troubles_path
