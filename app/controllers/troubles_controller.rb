@@ -29,10 +29,8 @@ class TroublesController < ApplicationController
     respond_to do |format|
       if @trouble.save
         format.html { redirect_to @trouble, notice: 'Trouble was successfully created.' }
-        format.json { render :show, status: :created, location: @trouble }
       else
         format.html { render :new }
-        format.json { render json: @trouble.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -43,10 +41,8 @@ class TroublesController < ApplicationController
     respond_to do |format|
       if @trouble.update(trouble_params)
         format.html { redirect_to @trouble, notice: 'Trouble was successfully updated.' }
-        format.json { render :show, status: :ok, location: @trouble }
       else
         format.html { render :edit }
-        format.json { render json: @trouble.errors, status: :unprocessable_entity }
       end
     end
   end
@@ -57,7 +53,6 @@ class TroublesController < ApplicationController
     @trouble.destroy
     respond_to do |format|
       format.html { redirect_to troubles_url, notice: 'Trouble was successfully destroyed.' }
-      format.json { head :no_content }
     end
   end
 
