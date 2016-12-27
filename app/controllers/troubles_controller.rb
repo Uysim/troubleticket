@@ -4,7 +4,7 @@ class TroublesController < ApplicationController
   # GET /troubles
   # GET /troubles.json
   def index
-    @troubles = Trouble.all
+    @troubles = TroublesGrid.new(params[:troubles_grid])
   end
 
   # GET /troubles/1
