@@ -6,23 +6,19 @@ class TroublesGrid
     Trouble.all
   end
 
-  filter(:range, :string) do |value|
-    self.where('range iLike :range', range: "%#{value}%")
-  end
+  filter(:range, :string)
 
-  filter(:state, :string) do |value|
-    self.where('state iLike :state', state: "%#{value}%")
-  end
+  filter(:state, :string)
 
   filter(:detail) do |value|
     self.where('detail iLike :detail', detail: "%#{value}%")
   end
 
-  filter(:user_email, :enum, select: User.all.map(&:email), header: 'User Email') do |value, scope|
+  filter(:user_email, :enum, select: User.pluck(:email), header: 'User Email') do |value, scope|
     scope.filter_with_user_email(value)
   end
 
-  filter(:client_name, :enum, select: Client.all.map(&:name), header: 'Client Name') do |value, scope|
+  filter(:client_name, :enum, select: Client.pluck(:name), header: 'Client Name') do |value, scope|
     scope.filter_with_client_name(value)
   end
 

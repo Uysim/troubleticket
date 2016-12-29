@@ -6,13 +6,9 @@ class UsersGrid
     User.all
   end
 
-  filter(:email, :string) do |value|
-    self.where('email iLike :email', email: "%#{value}%")
-  end
+  filter(:email, :string)
 
-  filter(:role, :enum, select: ['admin', 'support']) do |value, scope|
-    scope.filter_by_role(value)
-  end
+  filter(:role, :enum, select: ['admin', 'support'])
 
   column(:email)
   column(:role)
