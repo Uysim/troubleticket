@@ -14,8 +14,4 @@ class User < ApplicationRecord
        role == user_role
      end
    end
-
-   def self.filter_by_role(role)
-     self.where('role iLike :role', role: "#{role}")
-   end
 end
