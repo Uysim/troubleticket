@@ -11,11 +11,15 @@
     / Collect the nav links, forms, and other content for toggling
     #bs-example-navbar-collapse-1.collapse.navbar-collapse
       %ul.nav.navbar-nav
-        %li
-          = link_to 'Manage Users', admin_users_path
-        %li
-          = link_to 'Clients', clients_path
-        %li
-          = link_to 'Toubles', troubles_path
-        %li
-          = link_to 'Sign Out', destroy_user_session_path, method: :delete
+        - if user_signed_in?
+          %li
+            = link_to 'Manage Users', users_path
+          %li
+            = link_to 'Clients', clients_path
+          %li
+            = link_to 'Toubles', troubles_path
+          %li
+            = link_to 'Sign Out', destroy_user_session_path, method: :delete
+        - else
+          %li
+            = link_to 'Log In', new_user_session_path

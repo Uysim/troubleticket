@@ -64,6 +64,6 @@ class TroublesController < AdminBaseController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trouble_params
-      params.require(:trouble).permit(:client_id, :user_id, :range, :state, :detail)
+      params.require(:trouble).permit(:client_id, :user_id, :range, :state, :detail, :occupancy)
     end
 end
