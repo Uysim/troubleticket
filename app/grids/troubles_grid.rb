@@ -12,6 +12,7 @@ class TroublesGrid
   end
   column(:user_email)
   column(:client_name)
+  column(:occupancy)
 
   column(:control, header: '', html: true) do |object|
     render 'control', trouble: object
