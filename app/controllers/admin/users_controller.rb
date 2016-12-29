@@ -23,8 +23,8 @@ module Admin
     end
 
     def update
-      if @user.update_attributes(user_params)
-        redirect_to admin_user_path(@user), notice: 'User is successfully updated'
+      if @user.update_without_password(user_params)
+        redirect_to admin_users_path, notice: 'User is successfully updated'
       else
         render :edit
       end

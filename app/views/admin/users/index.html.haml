@@ -3,6 +3,7 @@
     %h1.page-header.text-center
       Manage Users
   .col-xs-12
+    = datagrid_form_for @users, url: admin_users_path
     .panel.panel-default.users
       .panel-heading
         .row
