@@ -1,4 +1,4 @@
-class TroublesController < ApplicationController
+class TroublesController < AdminBaseController
   before_action :set_trouble, only: [:show, :edit, :update, :destroy]
 
   # GET /troubles

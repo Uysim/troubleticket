@@ -1,0 +1,2 @@
+class TroublePolicy < ApplicationPolicy
+end
