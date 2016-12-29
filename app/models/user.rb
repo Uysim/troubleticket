@@ -5,4 +5,13 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
    has_many :troubles, dependent: :restrict_with_error
+
+   validates :role, presence: true
+   ROLE = ['admin', 'staff']
+
+   ROLE.each do |user_role|
+     define_method "#{user_role}?" do
+       role == user_role
+     end
+   end
 end
