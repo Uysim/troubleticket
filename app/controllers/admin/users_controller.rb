@@ -1,5 +1,5 @@
 module Admin
-  class UsersController < ApplicationController
+  class UsersController < AdminBaseController
     before_action :find_user, only: [:show, :edit, :update, :destroy]
 
     def index
