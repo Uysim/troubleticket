@@ -9,7 +9,7 @@ class ClientsGrid
   filter(:id_number, :string)
 
   filter(:name, :string) do |value|
-    self.where('name iLike :name', name: "%#{value}%")
+    self.name_like(value)
   end
 
   filter(:phone, :string)
