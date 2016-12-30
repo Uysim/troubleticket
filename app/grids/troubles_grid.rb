@@ -28,6 +28,7 @@ class TroublesGrid
   filter(:client_phone) do |value|
     self.joins(:client).merge(Client.phone_like(value))
   end
+  filter(:occupancy)
 
   filter(:client_email) do |value|
     self.joins(:client).merge(Client.email_like(value))

@@ -3,4 +3,6 @@ TTicket.TroublesUpdate = TTicket.TroublesEdit = TTicket.TroublesNew = TTicket.Tr
     @_initDateTimePicker()
 
   _initDateTimePicker: ->
-    $('.datetime-picker').datetimepicker format: 'YYYY/MM/DD LT'
+    $('.datetime-picker').datetimepicker
+      format: 'YYYY-MM-DD LT',
+      minDate: new Date()

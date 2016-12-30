@@ -1,3 +1,5 @@
-= link_to 'Show', trouble
+= link_to edit_trouble_path(trouble), class: 'btn btn-primary' do
+  %i.fa.fa-eye Edit
 |
-= link_to 'Destroy', trouble, method: :delete, data: { confirm: 'Are you sure?' }
+= link_to trouble, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
+  %i.fa.fa-trash Remove

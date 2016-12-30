@@ -1,0 +1,15 @@
+.row
+  = form_for grid, options do |f|
+    - grid.filters.each do |filter|
+      .col-md-4.box
+        .datagrid-filter.filter.form-group
+          = f.datagrid_label filter, class: 'control-label'
+          = f.datagrid_filter filter, partials: options[:partials], class: "form-control"
+    .row
+      .datagrid-actions.col-xs-12
+        .control-btn
+          = button_tag(type: 'submit', class: "btn btn-primary") do
+            %i.fa.fa-search
+            Search
+          - empty_parameter = Rails.version >= "4.1.0" && Rails.version <= '4.1.2' ? nil : {}
+          = link_to ('<i class="fa fa-refresh"></i> Reset').html_safe, url_for(grid.to_param => empty_parameter), :class => "datagrid-reset btn btn-danger"

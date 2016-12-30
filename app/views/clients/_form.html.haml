@@ -1,4 +1,4 @@
-= simple_form_for(@client) do |f|
+= simple_form_for(@client, html: { class: 'form-horizontal' }, wrapper: :horizontal_form) do |f|
   = f.error_notification
   .form-inputs
     = f.input :id_number
@@ -7,4 +7,5 @@
     = f.input :email
     = f.input :address
   .form-actions
-    = f.button :submit
+    .order
+      = f.button :submit, class: "btn btn-primary"

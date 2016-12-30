@@ -1,3 +1,6 @@
-%h1 New Trouble
+%h3.title New Trouble
+
 = render 'form', trouble: @trouble
-= link_to 'Back', troubles_path
+= link_to troubles_path, class: 'btn btn-success' do
+  %i.fa.fa-arrow-left
+    %strong Back

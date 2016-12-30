@@ -1,5 +1,10 @@
-%h1 Editing Client
+%h3.title Editing Client
 = render 'form', client: @client
-= link_to 'Show', @client
+
+= link_to clients_path, class: 'btn btn-success' do
+  %i.fa.fa-arrow-left
+    %strong Back
 |
-= link_to 'Back', clients_path
+= link_to @client, class: 'btn btn-info' do
+  %i.fa.fa-eye
+    %strong Show

@@ -1,3 +1,5 @@
-%h1 New Client
+%h3.title New Client
 = render 'form', client: @client
-= link_to 'Back', clients_path
+= link_to clients_path, class: 'btn btn-success' do
+  %i.fa.fa-arrow-left
+    %strong Back

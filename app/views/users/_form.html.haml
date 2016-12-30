@@ -1,15 +1,12 @@
-= simple_form_for(@user) do |f|
-
-  = f.input :name
-
-  = f.input :email
-
-  = f.input :role, collection: User::ROLE
-
-  = f.input :password
-
-  = f.input :password_confirmation
+= simple_form_for(@user, html: { class: 'form-horizontal' }, wrapper: :horizontal_form) do |f|
+  .form-inputs
+    = f.input :name
+    = f.input :email
+    = f.input :role, collection: User::ROLE
+    = f.input :password
+    = f.input :password_confirmation
 
   .form-group
-    = link_to 'Cancel', :back, class: 'btn btn-default'
-    = f.button :submit, class: 'btn btn-primary'
+    .order
+      = link_to 'Cancel', :back, class: 'btn btn-default'
+      = f.button :submit, class: 'btn btn-primary'

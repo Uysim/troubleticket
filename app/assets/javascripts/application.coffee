@@ -10,5 +10,6 @@
 
 #= require troubles/show
 #= require troubles/form
+#= require troubles/index
 
 #= require initializer

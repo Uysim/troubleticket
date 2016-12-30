@@ -1,5 +1,8 @@
-= link_to 'Show', client
+= link_to client, class: 'btn btn-success' do
+  %i.fa.fa-eye Show
 |
-= link_to 'Edit', edit_client_path(client)
+= link_to edit_client_path(client), class: 'btn btn-primary' do
+  %i.fa.fa-eye Edit
 |
-= link_to 'Destroy', client, method: :delete, data: { confirm: 'Are you sure?' }
+= link_to client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
+  %i.fa.fa-trash Remove
