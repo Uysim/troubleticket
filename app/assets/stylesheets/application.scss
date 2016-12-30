@@ -1,6 +1,7 @@
 @import 'https://fonts.googleapis.com/css?family=Roboto';
 @import 'bootstrap-sprockets';
 @import 'bootstrap';
+@import 'bootstrap-datetimepicker';
 @import 'bourbon';
 @import 'scaffolds';
-@import 'bootstrap-datepicker3';
+@import 'shared/*';

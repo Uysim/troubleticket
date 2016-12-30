@@ -19,7 +19,8 @@ gem 'devise',             '~> 4.2.0'
 gem 'datagrid',           '~> 1.4.0'
 gem 'dotenv-rails',       '~> 2.1.0'
 gem 'pundit',             '~> 1.1.0'
-gem 'bootstrap-datepicker-rails'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.17.43'
 
 
 group :development, :test do

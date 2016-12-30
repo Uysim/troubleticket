@@ -17,6 +17,9 @@
 %p
   %strong Occupancy:
   = @trouble.occupancy
+%p
+  %strong Occur Date:
+  = @trouble.occur_date
 = link_to 'Edit', edit_trouble_path(@trouble)
 |
 = link_to 'Back', troubles_path
