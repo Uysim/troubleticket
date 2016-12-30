@@ -1,5 +1,4 @@
 class TroublesGrid
-
   include Datagrid
 
   scope do
@@ -23,7 +22,8 @@ class TroublesGrid
   end
 
   column(:range)
-  column(:aasm_state)
+  column(:aasm_state, header: 'State')
+
   column(:detail) do |object|
     object.detail.to_s.truncate(30);
   end

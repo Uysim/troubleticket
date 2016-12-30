@@ -1,10 +1,12 @@
 class TroublesController < AdminBaseController
-  before_action :set_trouble, only: [:show, :edit, :update, :destroy]
+  before_action :set_trouble, :authorize_user, only: [:show, :edit, :update, :destroy, :assign]
+
 
   # GET /troubles
   # GET /troubles.json
   def index
     @troubles = TroublesGrid.new(params[:troubles_grid])
+    authorize @troubles.assets
   end
 
   # GET /troubles/1
@@ -15,6 +17,7 @@ class TroublesController < AdminBaseController
   # GET /troubles/new
   def new
     @trouble = Trouble.new
+    authorize_user
   end
 
   # GET /troubles/1/edit
@@ -25,7 +28,7 @@ class TroublesController < AdminBaseController
   # POST /troubles.json
   def create
     @trouble = Trouble.new(trouble_params)
-
+    authorize_user
     respond_to do |format|
       if @trouble.save
         format.html { redirect_to @trouble, notice: 'Trouble was successfully created.' }
@@ -56,14 +59,32 @@ class TroublesController < AdminBaseController
     end
   end
 
+  def assign
+    @trouble.assign_attributes(assign_params)
+    if @trouble.assign!
+      redirect_to @trouble, notice: 'Trouble is already assigned support'
+    else
+      redirect_to @trouble, notice: @trouble.errors.full_messages.join(', ')
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_trouble
-      @trouble = Trouble.find(params[:id])
+      id = params[:id] || params[:trouble_id]
+      @trouble = Trouble.find(id)
+    end
+
+    def authorize_user
+      authorize @trouble
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trouble_params
-      params.require(:trouble).permit(:client_id, :user_id, :range, :state, :detail, :occupancy, :occur_date)
+      params.require(:trouble).permit(:client_id, :range, :detail)
+    end
+
+    def assign_params
+      params.require(:trouble).permit(:user_id, :occupancy)
     end
 end

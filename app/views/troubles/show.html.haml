@@ -10,7 +10,7 @@
   = @trouble.range
 %p
   %strong State:
-  = @trouble.state
+  = @trouble.aasm.current_state
 %p
   %strong Detail:
   = @trouble.detail
@@ -20,6 +20,9 @@
 %p
   %strong Occur Date:
   = @trouble.occur_date
+
+= render 'assign_form' if policy(@trouble).assign?
+
 = link_to 'Edit', edit_trouble_path(@trouble)
 |
 = link_to 'Back', troubles_path
