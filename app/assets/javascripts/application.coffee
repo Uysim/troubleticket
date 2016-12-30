@@ -9,5 +9,6 @@
 #= require common
 
 #= require troubles/form
+#= require troubles/index
 
 #= require initializer

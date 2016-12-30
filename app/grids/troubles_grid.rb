@@ -21,6 +21,7 @@ class TroublesGrid
   filter(:client_name, :enum, select: Client.pluck(:name), header: 'Client Name') do |value, scope|
     scope.filter_with_client_name(value)
   end
+  filter(:occupancy)
 
   column(:range)
   column(:aasm_state)

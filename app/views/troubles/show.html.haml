@@ -1,25 +1,28 @@
-%p#notice= notice
-%p
-  %strong Client:
-  = @trouble.client_name
-%p
-  %strong User:
-  = @trouble.user_email
-%p
-  %strong Range:
-  = @trouble.range
-%p
-  %strong State:
-  = @trouble.state
-%p
-  %strong Detail:
-  = @trouble.detail
-%p
-  %strong Occupancy:
-  = @trouble.occupancy
-%p
-  %strong Occur Date:
-  = @trouble.occur_date
-= link_to 'Edit', edit_trouble_path(@trouble)
+%h2{style: 'text-align:center'} Detail About Trouble
+.jumbotron
+  %p#notice= notice
+  %p
+    %strong Client:
+    = @trouble.client_name
+  %p
+    %strong User:
+    = @trouble.user_email
+  %p
+    %strong Range:
+    = @trouble.range
+  %p
+    %strong State:
+    = @trouble.aasm_state
+  %p
+    %strong Detail:
+    = @trouble.detail
+  %p
+    %strong Occupancy:
+    = @trouble.occupancy
+  %p
+    %strong Occur Date:
+    = @trouble.occur_date
+
+= link_to '<i class="fa fa-arrow-left" ></i> Back'.html_safe, troubles_path, class: 'btn btn-success'
 |
-= link_to 'Back', troubles_path
+= link_to '<i class="fa fa-edit" ></i> Edit'.html_safe, edit_trouble_path(@trouble), class: 'btn btn-primary'

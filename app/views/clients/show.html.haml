@@ -1,19 +1,22 @@
-%p#notice= notice
-%p
-  %strong Name:
-  = @client.name
-%p
-  %strong Id number:
-  = @client.id_number
-%p
-  %strong Phone:
-  = @client.phone
-%p
-  %strong Email:
-  = @client.email
-%p
-  %strong Address:
-  = @client.address
-= link_to 'Edit', edit_client_path(@client)
+%h2{style: 'text-align:center'} Detail About Client
+.jumbotron
+  %p#notice= notice
+  %p
+    %strong Name:
+    = @client.name
+  %p
+    %strong Id number:
+    = @client.id_number
+  %p
+    %strong Phone:
+    = @client.phone
+  %p
+    %strong Email:
+    = @client.email
+  %p
+    %strong Address:
+    = @client.address
+
+= link_to '<i class="fa fa-arrow-left" ></i> Back'.html_safe, clients_path, class: 'btn btn-success'
 |
-= link_to 'Back', clients_path
+= link_to '<i class="fa fa-edit" ></i> Edit'.html_safe, edit_client_path(@client), class: 'btn btn-primary'

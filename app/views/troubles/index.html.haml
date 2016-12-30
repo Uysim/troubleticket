@@ -1,6 +1,6 @@
 %p#notice= notice
 = datagrid_form_for @troubles, url: troubles_path
-%h1 Troubles
+%h2 Troubles
 = datagrid_table(@troubles)
 %br/
-= link_to 'New Trouble', new_trouble_path
+= link_to '<i class="fa fa-plus"></i> Trouble'.html_safe, new_trouble_path, class: "btn btn-primary"

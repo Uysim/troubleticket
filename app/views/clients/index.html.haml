@@ -2,5 +2,5 @@
 = datagrid_form_for @clients, url: clients_path
 %h1 Clients
 = datagrid_table(@clients)
-%br/
-= link_to 'New Client', new_client_path
+%br
+= link_to '<i class="fa fa-plus"></i> Client'.html_safe, new_client_path, class: "btn btn-primary"
