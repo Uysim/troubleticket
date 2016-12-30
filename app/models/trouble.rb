@@ -14,6 +14,8 @@ class Trouble < ApplicationRecord
 
   after_validation :bind_client_id_number_errors_with_client, if: ->{ errors[:client].present? }
 
+  RANGE = ['Internet Speed', 'Connection Stability', 'No Link', 'Others']
+
   aasm do
     state :open, initial: true
     state :assigned
