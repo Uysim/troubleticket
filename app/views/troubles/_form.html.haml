@@ -2,8 +2,8 @@
   = f.error_notification
   .form-inputs
     = f.association :client
-    = f.association :user, label_method: :email
     = f.input :range
     = f.input :detail
+    = f.input :occur_date, as: :string, input_html: { class: 'datetime-picker' }, wrapper_html: { class: 'datepicker-wrapper' }
   .form-actions
     = f.button :submit

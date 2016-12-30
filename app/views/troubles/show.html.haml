@@ -17,6 +17,9 @@
 %p
   %strong Occupancy:
   = @trouble.occupancy
+%p
+  %strong Occur Date:
+  = @trouble.occur_date
 
 = render 'assign_form' if policy(@trouble).assign?
 
