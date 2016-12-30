@@ -1,6 +1,6 @@
 class TroublesController < AdminBaseController
   before_action :find_client, only: [:create]
-  before_action :set_trouble, :authorize_user, only: [:show, :edit, :update, :destroy, :assign, :work]
+  before_action :set_trouble, :authorize_user, only: [:show, :edit, :update, :destroy, :assign, :work, :close]
 
   # GET /troubles
   # GET /troubles.json
@@ -71,6 +71,14 @@ class TroublesController < AdminBaseController
   def work
     if @trouble.work!
       redirect_to @trouble, notice: 'You are working on this trouble'
+    else
+      redirect_to @trouble, notice: @trouble.errors.full_messages.join(', ')
+    end
+  end
+
+  def close
+    if @trouble.close!
+      redirect_to @trouble, notice: 'Trouble is already closed'
     else
       redirect_to @trouble, notice: @trouble.errors.full_messages.join(', ')
     end
