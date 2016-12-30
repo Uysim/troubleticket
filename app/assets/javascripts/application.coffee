@@ -8,6 +8,7 @@
 #= require util
 #= require common
 
+#= require troubles/show
 #= require troubles/form
 #= require troubles/index
 

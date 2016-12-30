@@ -1,8 +1,8 @@
 = simple_form_for(@client, html: { class: 'form-horizontal' }, wrapper: :horizontal_form) do |f|
   = f.error_notification
   .form-inputs
-    = f.input :name
     = f.input :id_number
+    = f.input :name
     = f.input :phone
     = f.input :email
     = f.input :address

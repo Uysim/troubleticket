@@ -1,10 +1,13 @@
-class TroublesController < AdminBaseController
-  before_action :set_trouble, only: [:show, :edit, :update, :destroy]
+class TroublesController < ApplicationController
+  before_action :authenticate_user!, except: [:new, :create]
+  before_action :find_client, only: [:create]
+  before_action :set_trouble, :authorize_user, only: [:show, :destroy, :assign, :work, :close]
 
   # GET /troubles
   # GET /troubles.json
   def index
     @troubles = TroublesGrid.new(params[:troubles_grid])
+    authorize @troubles.assets
   end
 
   # GET /troubles/1
@@ -17,32 +20,15 @@ class TroublesController < AdminBaseController
     @trouble = Trouble.new
   end
 
-  # GET /troubles/1/edit
-  def edit
-  end
-
   # POST /troubles
   # POST /troubles.json
   def create
-    @trouble = Trouble.new(trouble_params)
-
+    @trouble = Trouble.new(trouble_params.merge(client: @client))
     respond_to do |format|
       if @trouble.save
         format.html { redirect_to @trouble, notice: 'Trouble was successfully created.' }
       else
         format.html { render :new }
-      end
-    end
-  end
-
-  # PATCH/PUT /troubles/1
-  # PATCH/PUT /troubles/1.json
-  def update
-    respond_to do |format|
-      if @trouble.update(trouble_params)
-        format.html { redirect_to @trouble, notice: 'Trouble was successfully updated.' }
-      else
-        format.html { render :edit }
       end
     end
   end
@@ -56,14 +42,52 @@ class TroublesController < AdminBaseController
     end
   end
 
+  def assign
+    @trouble.assign_attributes(assign_params)
+    if @trouble.assign!
+      redirect_to @trouble, notice: 'Trouble is already assigned support'
+    else
+      redirect_to @trouble, notice: @trouble.errors.full_messages.join(', ')
+    end
+  end
+
+  def work
+    if @trouble.work!
+      redirect_to @trouble, notice: 'You are working on this trouble'
+    else
+      redirect_to @trouble, notice: @trouble.errors.full_messages.join(', ')
+    end
+  end
+
+  def close
+    if @trouble.close!
+      redirect_to @trouble, notice: 'Trouble is already closed'
+    else
+      redirect_to @trouble, notice: @trouble.errors.full_messages.join(', ')
+    end
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_trouble
-      @trouble = Trouble.find(params[:id])
+      id = params[:id] || params[:trouble_id]
+      @trouble = Trouble.find(id)
+    end
+
+    def authorize_user
+      authorize @trouble
+    end
+
+    def find_client
+      @client = Client.find_by id_number: trouble_params[:client_id_number]
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trouble_params
-      params.require(:trouble).permit(:client_id, :user_id, :range, :state, :detail, :occupancy, :occur_date)
+      params.require(:trouble).permit(:range, :detail, :client_id_number)
+    end
+
+    def assign_params
+      params.require(:trouble).permit(:user_id, :occupancy)
     end
 end

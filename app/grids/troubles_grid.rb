@@ -1,5 +1,4 @@
 class TroublesGrid
-
   include Datagrid
 
   scope do
@@ -8,23 +7,38 @@ class TroublesGrid
 
   filter(:range, :string)
 
-  filter(:aasm_state, :string)
+  filter(:aasm_state, :enum, select: Trouble::aasm.states)
 
   filter(:detail) do |value|
     self.where('detail iLike :detail', detail: "%#{value}%")
   end
 
-  filter(:user_email, :enum, select: User.pluck(:email), header: 'User Email') do |value, scope|
-    scope.filter_with_user_email(value)
+  filter(:user_email, header: 'User Email') do |value|
+    self.joins(:user).merge(User.email_like(value))
   end
 
-  filter(:client_name, :enum, select: Client.pluck(:name), header: 'Client Name') do |value, scope|
-    scope.filter_with_client_name(value)
+  filter(:client_name, header: 'Client Name') do |value|
+    self.joins(:client).merge(Client.name_like(value))
+  end
+
+  filter(:client_id_number) do |value|
+    self.joins(:client).merge(Client.id_number_like(value))
+  end
+
+  filter(:client_phone) do |value|
+    self.joins(:client).merge(Client.phone_like(value))
   end
   filter(:occupancy)
 
+  filter(:client_email) do |value|
+    self.joins(:client).merge(Client.email_like(value))
+  end
+
+  filter(:range, :enum, select: Trouble::RANGE)
+
   column(:range)
-  column(:aasm_state)
+  column(:aasm_state, header: 'State')
+
   column(:detail) do |object|
     object.detail.to_s.truncate(30);
   end

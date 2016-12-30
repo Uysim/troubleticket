@@ -1,3 +1,4 @@
+
 %h2.text-center Detail About Trouble
 .jumbotron
   %p#notice= notice
@@ -23,10 +24,10 @@
     %strong Occur Date:
     = @trouble.occur_date
 
+= render 'assign_form' if policy(@trouble).assign?
+= render 'work_link' if policy(@trouble).work?
+= render 'close_link' if policy(@trouble).close?
+
 = link_to troubles_path, class: 'btn btn-success' do
   %i.fa.fa-arrow-left
-    %strong Back
-|
-= link_to '<i class="fa fa-edit" ></i> Edit'.html_safe, edit_trouble_path(@trouble), class: 'btn btn-primary' do
-  %i.fa.fa-edit
     %strong Back
