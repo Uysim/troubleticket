@@ -20,6 +20,7 @@ gem 'datagrid',           '~> 1.4.0'
 gem 'dotenv-rails',       '~> 2.1.0'
 gem 'pundit',             '~> 1.1.0'
 gem 'bootstrap-datepicker-rails'
+gem 'aasm',               '~> 4.11.0'
 
 
 group :development, :test do
