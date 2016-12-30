@@ -3,4 +3,6 @@
 %h2 Troubles
 = datagrid_table(@troubles)
 %br/
-= link_to '<i class="fa fa-plus"></i> Trouble'.html_safe, new_trouble_path, class: "btn btn-primary"
+= link_to new_trouble_path, class: "btn btn-primary" do
+  %i.fa.fa-plus
+    %strong New Trouble

@@ -1,3 +1,5 @@
-%h2{style:'text-align:right;'} New Client
+%h3.b-title New Client
 = render 'form', client: @client
-= link_to '<i class="fa fa-arrow-left"></i> Back'.html_safe, clients_path, class: 'btn btn-success'
+= link_to clients_path, class: 'btn btn-success' do
+  %i.fa.fa-arrow-left
+    %strong Back

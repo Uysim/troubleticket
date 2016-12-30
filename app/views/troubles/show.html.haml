@@ -1,4 +1,4 @@
-%h2{style: 'text-align:center'} Detail About Trouble
+%h2.b-center Detail About Trouble
 .jumbotron
   %p#notice= notice
   %p
@@ -23,6 +23,10 @@
     %strong Occur Date:
     = @trouble.occur_date
 
-= link_to '<i class="fa fa-arrow-left" ></i> Back'.html_safe, troubles_path, class: 'btn btn-success'
+= link_to troubles_path, class: 'btn btn-success' do
+  %i.fa.fa-arrow-left
+    %strong Back
 |
-= link_to '<i class="fa fa-edit" ></i> Edit'.html_safe, edit_trouble_path(@trouble), class: 'btn btn-primary'
+= link_to '<i class="fa fa-edit" ></i> Edit'.html_safe, edit_trouble_path(@trouble), class: 'btn btn-primary' do
+  %i.fa.fa-edit
+    %strong Back

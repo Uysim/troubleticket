@@ -1,5 +1,8 @@
-= link_to '<i class="fa fa-eye"></i> Show'.html_safe, client, class: 'btn btn-success'
+= link_to client, class: 'btn btn-success' do
+  %i.fa.fa-eye Show
 |
-= link_to '<i class="fa fa-edit" ></i> Edit'.html_safe, edit_client_path(client), class: 'btn btn-primary'
+= link_to edit_client_path(client), class: 'btn btn-primary' do
+  %i.fa.fa-eye Edit
 |
-= link_to '<i class="fa fa-trash"></i> Remove'.html_safe, client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+= link_to client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
+  %i.fa.fa-trash Remove

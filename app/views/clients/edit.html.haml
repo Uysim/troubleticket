@@ -1,6 +1,10 @@
-%h3{style:'text-align:right;'} Editing Client
+%h3.b-title Editing Client
 = render 'form', client: @client
 
-= link_to '<i class="fa fa-arrow-left"></i> Back'.html_safe, clients_path, class: 'btn btn-success'
+= link_to clients_path, class: 'btn btn-success' do
+  %i.fa.fa-arrow-left
+    %strong Back
 |
-= link_to '<i class="fa fa-eye"></i> Show'.html_safe, @client, class: 'btn btn-info'
+= link_to @client, class: 'btn btn-info' do
+  %i.fa.fa-eye
+    %strong Show

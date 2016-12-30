@@ -1,6 +1,10 @@
-%h3{style:'text-align:right;'} Editing Trouble
+%h3.b-title Editing Trouble
 = render 'form', trouble: @trouble
 
-= link_to '<i class="fa fa-arrow-left"></i> Back'.html_safe, troubles_path, class: 'btn btn-success'
+= link_to troubles_path, class: 'btn btn-success' do
+  %i.fa.fa-arrow-left
+    %strong Back
 |
-= link_to '<i class="fa fa-eye"></i> Show'.html_safe, @trouble, class: 'btn btn-info'
+= link_to @trouble, class: 'btn btn-info' do
+  %i.fa.fa-eye
+    %strong Show
