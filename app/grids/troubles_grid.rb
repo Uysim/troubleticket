@@ -5,8 +5,6 @@ class TroublesGrid
     Trouble.all
   end
 
-  filter(:range, :string)
-
   filter(:aasm_state, :enum, select: Trouble::aasm.states)
 
   filter(:detail) do |value|
