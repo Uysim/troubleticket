@@ -5,9 +5,9 @@ class Client < ApplicationRecord
   validates :id_number, presence: true, uniqueness: true
   validates :email,     presence: true
 
-  scope :id_number_like, -> (id_number) { where('clients.id_number iLike :id_number', id_number: "#{id_number}") }
-  scope :phone_like, -> (phone) { where('clients.phone iLike :phone', phone: "#{phone}") }
-  scope :email_like, -> (email) { where('clients.email iLike :email', email: "#{email}") }
+  scope :with_id_number, -> (id_number) { where(id_number: id_number) }
+  scope :with_phone, -> (phone) { where(phone: phone) }
+  scope :with_email, -> (email) { where(email: email) }
   scope :name_like, ->(name){ where('clients.name iLike :name', name: "%#{name}%") }
 
 end

@@ -12,7 +12,7 @@ class TroublesGrid
   end
 
   filter(:user_email, header: 'User Email') do |value|
-    self.joins(:user).merge(User.email_like(value))
+    self.joins(:user).merge(User.with_email(value))
   end
 
   filter(:client_name, header: 'Client Name') do |value|
@@ -20,16 +20,16 @@ class TroublesGrid
   end
 
   filter(:client_id_number) do |value|
-    self.joins(:client).merge(Client.id_number_like(value))
+    self.joins(:client).merge(Client.with_id_number(value))
   end
 
   filter(:client_phone) do |value|
-    self.joins(:client).merge(Client.phone_like(value))
+    self.joins(:client).merge(Client.with_phone(value))
   end
   filter(:occupancy)
 
   filter(:client_email) do |value|
-    self.joins(:client).merge(Client.email_like(value))
+    self.joins(:client).merge(Client.with_email(value))
   end
 
   filter(:range, :enum, select: Trouble::RANGE)
