@@ -3,7 +3,7 @@ class UsersController < AdminBaseController
 
   def index
     @users = UsersGrid.new(params[:users_grid])
-    authorize @user.assets
+    authorize @users.assets
   end
 
   def new
