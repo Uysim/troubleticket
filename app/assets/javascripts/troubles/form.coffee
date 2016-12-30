@@ -2,4 +2,4 @@ TTicket.TroublesUpdate = TTicket.TroublesEdit = TTicket.TroublesNew = TTicket.Tr
   init: ->
     @_initDatePicker()
   _initDatePicker: ->
-    $('#trouble_occupancy').datepicker();
+    $('.datepicker').datepicker();

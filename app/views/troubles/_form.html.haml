@@ -6,6 +6,7 @@
     = f.input :range
     = f.input :state
     = f.input :detail
-    = f.input :occupancy, as: :string
+    = f.input :occupancy, as: :string, input_html: { class: 'datepicker' }
+    = f.input :occur_date, as: :string, input_html: { class: 'datepicker' }
   .form-actions
     = f.button :submit
