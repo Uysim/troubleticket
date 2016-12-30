@@ -35,14 +35,6 @@ class Trouble < ApplicationRecord
     end
   end
 
-  def self.filter_with_user_email(email)
-    joins(:user).where('users.email iLike :email', email: "%#{email}")
-  end
-
-  def self.filter_with_client_name(name)
-    joins(:client).where('clients.name iLike :name', name: "%#{name}")
-  end
-
   private
 
   def bind_client_id_number_errors_with_client
