@@ -22,7 +22,7 @@
   = @trouble.occur_date
 
 = render 'assign_form' if policy(@trouble).assign?
-
+= render 'work_link' if policy(@trouble).work?
 = link_to 'Edit', edit_trouble_path(@trouble)
 |
 = link_to 'Back', troubles_path

@@ -1,6 +1,7 @@
 class TroublesController < AdminBaseController
-  before_action :set_trouble, :authorize_user, only: [:show, :edit, :update, :destroy, :assign]
   before_action :find_client, only: [:create]
+  before_action :set_trouble, :authorize_user, only: [:show, :edit, :update, :destroy, :assign, :work]
+
   # GET /troubles
   # GET /troubles.json
   def index
@@ -62,6 +63,14 @@ class TroublesController < AdminBaseController
     @trouble.assign_attributes(assign_params)
     if @trouble.assign!
       redirect_to @trouble, notice: 'Trouble is already assigned support'
+    else
+      redirect_to @trouble, notice: @trouble.errors.full_messages.join(', ')
+    end
+  end
+
+  def work
+    if @trouble.work!
+      redirect_to @trouble, notice: 'You are working on this trouble'
     else
       redirect_to @trouble, notice: @trouble.errors.full_messages.join(', ')
     end
