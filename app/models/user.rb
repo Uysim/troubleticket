@@ -9,7 +9,7 @@ class User < ApplicationRecord
    validates :role, presence: true
 
    scope :support, ->{ where(role: 'support') }
-   scope :email_like, -> (email){ where('users.email iLike :email', email: "%#{email}%") }
+   scope :email_like, -> (email){ where('users.email iLike :email', email: "#{email}") }
 
    ROLE = ['admin', 'support']
 
