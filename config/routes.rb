@@ -7,5 +7,6 @@ Rails.application.routes.draw do
   resources :clients
   devise_for :users
   root 'pages#home'
+  get 'dashborad', to: 'pages#dashborad'
   resources :users
 end
