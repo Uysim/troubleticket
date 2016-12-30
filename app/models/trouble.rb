@@ -8,9 +8,6 @@ class Trouble < ApplicationRecord
   delegate :name, to: :client, prefix: true, allow_nil: true
 
   validates :range,       presence: true
-  validates :aasm_state,  presence: true
-  validates :occupancy,   presence: true
-  validates :occur_date,  presence: true
   validates :detail,      presence: true
 
   aasm do
