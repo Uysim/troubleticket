@@ -3,5 +3,4 @@ TTicket.TroublesIndex =
     @_initDatePicker()
   _initDatePicker: ->
     $('#troubles_grid_occupancy').datetimepicker
-      format: 'YYYY/MM/DD LT',
-      maxDate: new Date
+      format: 'YYYY-MM-DD'

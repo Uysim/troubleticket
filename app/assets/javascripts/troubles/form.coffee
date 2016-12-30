@@ -4,10 +4,10 @@ TTicket.TroublesUpdate = TTicket.TroublesEdit = TTicket.TroublesNew = TTicket.Tr
     @_initDateTimePicker()
   _initDatePicker: ->
     $('.datepicker').datetimepicker
-      format: 'YYYY/MM/DD',
-      maxDate: new Date
+      format: 'YYYY-MM-DD',
+      minDate: new Date()
 
   _initDateTimePicker: ->
     $('.datetime-picker').datetimepicker
-      format: 'YYYY/MM/DD LT',
-      maxDate: new Date
+      format: 'YYYY-MM-DD LT',
+      minDate: new Date()
