@@ -1,5 +1,5 @@
 class TroublesController < AdminBaseController
-  before_action :set_trouble, :authorize_user, only: [:show, :edit, :update, :destroy, :assign, :work, :close]
+  before_action :set_trouble, :authorize_user, only: [:show, :destroy, :assign, :work, :close]
 
 
   # GET /troubles
@@ -20,10 +20,6 @@ class TroublesController < AdminBaseController
     authorize_user
   end
 
-  # GET /troubles/1/edit
-  def edit
-  end
-
   # POST /troubles
   # POST /troubles.json
   def create
@@ -34,18 +30,6 @@ class TroublesController < AdminBaseController
         format.html { redirect_to @trouble, notice: 'Trouble was successfully created.' }
       else
         format.html { render :new }
-      end
-    end
-  end
-
-  # PATCH/PUT /troubles/1
-  # PATCH/PUT /troubles/1.json
-  def update
-    respond_to do |format|
-      if @trouble.update(trouble_params)
-        format.html { redirect_to @trouble, notice: 'Trouble was successfully updated.' }
-      else
-        format.html { render :edit }
       end
     end
   end
