@@ -1,4 +1,4 @@
-TTicket.TroublesNew = TTicket.TroublesCreate = TTicket.TroublesForm =
+TTicket.TroublesUpdate = TTicket.TroublesEdit = TTicket.TroublesNew = TTicket.TroublesCreate = TTicket.TroublesForm =
   init: ->
     @_initDateTimePicker()
 
