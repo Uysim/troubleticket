@@ -21,6 +21,18 @@ class TroublesGrid
     self.joins(:client).merge(Client.name_like(value))
   end
 
+  filter(:client_id_number) do |value|
+    self.joins(:client).merge(Client.id_number_like(value))
+  end
+
+  filter(:client_phone) do |value|
+    self.joins(:client).merge(Client.phone_like(value))
+  end
+
+  filter(:client_email) do |value|
+    self.joins(:client).merge(Client.email_like(value))
+  end
+
   column(:range)
   column(:aasm_state, header: 'State')
 
