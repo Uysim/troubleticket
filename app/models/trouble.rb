@@ -7,6 +7,9 @@ class Trouble < ApplicationRecord
   delegate :email, to: :user, prefix: true, allow_nil: true
   delegate :name, to: :client, prefix: true, allow_nil: true
 
+  validates :range,       presence: true
+  validates :detail,      presence: true
+
   aasm do
     state :open, initial: true
     state :assigned
