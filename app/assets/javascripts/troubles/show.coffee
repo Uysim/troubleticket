@@ -4,4 +4,6 @@ TTicket.TroublesShow =
     @_initDatePicker()
 
   _initDatePicker: ->
-    $('#trouble_occupancy').datepicker();
+    $('#trouble_occupancy').datetimepicker
+      format: 'YYYY-MM-DD',
+      minDate: new Date()

@@ -9,6 +9,6 @@
   %body{id: "#{controller_name}-#{params[:action]}"}
     / <p class="notice"><haml_silent></haml_silent></p>
     / <p class="alert"><haml_silent></haml_silent></p>
-    = render 'pages/header'
+    = render 'shared/header'
     .container
       = yield
