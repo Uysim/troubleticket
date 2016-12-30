@@ -6,6 +6,4 @@ class Client < ApplicationRecord
   validates :phone,     presence: true
   validates :email,     presence: true
   validates :address,   presence: true
-
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i }
 end

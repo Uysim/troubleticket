@@ -8,7 +8,7 @@ class TroublesGrid
 
   filter(:range, :string)
 
-  filter(:state, :string)
+  filter(:aasm_state, :string)
 
   filter(:detail) do |value|
     self.where('detail iLike :detail', detail: "%#{value}%")
