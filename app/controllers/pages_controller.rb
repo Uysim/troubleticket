@@ -5,11 +5,6 @@ class PagesController < ApplicationController
 
   def dashborad
     @user_role = current_user.role
-    if @user_role == 'admin'
-      @troubles = Trouble.all
-    else
-      @troubles = Trouble.where(user_id: current_user.id)
-      binding.pry
-    end
+    @troubles = policy_scope(Trouble)
   end
 end

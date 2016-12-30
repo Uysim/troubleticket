@@ -1,1 +1,10 @@
-hi
+.row
+  .col-sm-6
+    = link_to "#{@troubles.in_open_state.count} have been reported", troubles_path(:troubles_grid => {:aasm_state => "open"}), class: 'btn btn-info'
+  .col-sm-6
+    = link_to "#{@troubles.in_assigned_state.count} todo", troubles_path(:troubles_grid => {:aasm_state => "assigned"}), class: 'btn btn-primary'
+.row
+  .col-sm-6
+    = link_to "#{@troubles.in_working_state.count} in progressing", troubles_path(:troubles_grid => {:aasm_state => "working"}), class: 'btn btn-warning'
+  .col-sm-6
+    = link_to "#{@troubles.in_closed_state.count} have been closed", troubles_path(:troubles_grid => {:aasm_state => "closed"}), class: 'btn btn-success'
