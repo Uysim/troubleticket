@@ -6,4 +6,8 @@ class TroublePolicy < ApplicationPolicy
   def work?
     record.user == user && record.assigned?
   end
+
+  def close?
+    record.user == user && record.working?
+  end
 end
