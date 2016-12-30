@@ -17,7 +17,7 @@ class TroublesController < AdminBaseController
   # GET /troubles/new
   def new
     @trouble = Trouble.new
-    authorize @trouble
+    authorize_user
   end
 
   # GET /troubles/1/edit
@@ -28,7 +28,7 @@ class TroublesController < AdminBaseController
   # POST /troubles.json
   def create
     @trouble = Trouble.new(trouble_params)
-    authorize @trouble
+    authorize_user
     respond_to do |format|
       if @trouble.save
         format.html { redirect_to @trouble, notice: 'Trouble was successfully created.' }
