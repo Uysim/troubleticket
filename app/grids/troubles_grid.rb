@@ -33,6 +33,8 @@ class TroublesGrid
     self.joins(:client).merge(Client.email_like(value))
   end
 
+  filter(:range, :enum, select: Trouble::RANGE)
+
   column(:range)
   column(:aasm_state, header: 'State')
 

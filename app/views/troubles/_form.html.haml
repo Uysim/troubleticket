@@ -1,7 +1,7 @@
 = simple_form_for(@trouble, html: { class: 'form-horizontal' }) do |f|
   = f.error_notification
   = f.input :client_id_number
-  = f.input :range
+  = f.input :range, collection: Trouble::RANGE
   = f.input :detail
   = f.input :occur_date, as: :string, input_html: { class: 'datetime-picker' }, wrapper_html: { class: 'datepicker-wrapper' }
   .form-actions
