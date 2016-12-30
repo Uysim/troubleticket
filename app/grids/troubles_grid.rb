@@ -13,8 +13,8 @@ class TroublesGrid
     self.where('detail iLike :detail', detail: "%#{value}%")
   end
 
-  filter(:user_email, header: 'User Email') do |value, scope|
-    scope.joins(:user).merge(User.email_like(value))
+  filter(:user_email, header: 'User Email') do |value|
+    self.joins(:user).merge(User.email_like(value))
   end
 
   filter(:client_name, header: 'Client Name') do |value|
