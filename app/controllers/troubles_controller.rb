@@ -1,6 +1,6 @@
 class TroublesController < AdminBaseController
+  before_action :find_client, only: [:create]
   before_action :set_trouble, :authorize_user, only: [:show, :edit, :update, :destroy, :assign, :work, :close]
-
 
   # GET /troubles
   # GET /troubles.json
@@ -27,7 +27,7 @@ class TroublesController < AdminBaseController
   # POST /troubles
   # POST /troubles.json
   def create
-    @trouble = Trouble.new(trouble_params)
+    @trouble = Trouble.new(trouble_params.merge(client: @client))
     authorize_user
     respond_to do |format|
       if @trouble.save
@@ -95,9 +95,13 @@ class TroublesController < AdminBaseController
       authorize @trouble
     end
 
+    def find_client
+      @client = Client.find_by id_number: trouble_params[:client_id_number]
+    end
+
     # Never trust parameters from the scary internet, only allow the white list through.
     def trouble_params
-      params.require(:trouble).permit(:client_id, :range, :detail)
+      params.require(:trouble).permit(:range, :detail, :client_id_number)
     end
 
     def assign_params
