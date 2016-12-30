@@ -1,4 +1,5 @@
-class TroublesController < AdminBaseController
+class TroublesController < ApplicationController
+  before_action :authenticate_user!, except: [:new, :create]
   before_action :find_client, only: [:create]
   before_action :set_trouble, :authorize_user, only: [:show, :destroy, :assign, :work, :close]
 
@@ -17,14 +18,12 @@ class TroublesController < AdminBaseController
   # GET /troubles/new
   def new
     @trouble = Trouble.new
-    authorize_user
   end
 
   # POST /troubles
   # POST /troubles.json
   def create
     @trouble = Trouble.new(trouble_params.merge(client: @client))
-    authorize_user
     respond_to do |format|
       if @trouble.save
         format.html { redirect_to @trouble, notice: 'Trouble was successfully created.' }
