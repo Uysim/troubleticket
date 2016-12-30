@@ -1,0 +1,4 @@
+= simple_form_for @trouble, url: trouble_assign_path(@trouble), method: :put do |f|
+  = f.association :user, collection: User.support, label_method: :email
+  = f.input :occupancy, as: :string
+  = f.button :submit, 'Assign'

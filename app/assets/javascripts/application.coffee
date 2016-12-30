@@ -9,6 +9,6 @@
 #= require util
 #= require common
 
-#= require troubles/form
+#= require troubles/show
 
 #= require initializer

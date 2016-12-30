@@ -8,7 +8,7 @@ class TroublesGrid
 
   filter(:range, :string)
 
-  filter(:state, :string)
+  filter(:aasm_state, :string)
 
   filter(:detail) do |value|
     self.where('detail iLike :detail', detail: "%#{value}%")
@@ -23,7 +23,7 @@ class TroublesGrid
   end
 
   column(:range)
-  column(:state)
+  column(:aasm_state, header: 'State')
   column(:detail) do |object|
     object.detail.to_s.truncate(30);
   end

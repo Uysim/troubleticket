@@ -7,6 +7,9 @@ class User < ApplicationRecord
    has_many :troubles, dependent: :restrict_with_error
 
    validates :role, presence: true
+
+   scope :support, ->{ where(role: 'support') }
+
    ROLE = ['admin', 'support']
 
    ROLE.each do |user_role|
