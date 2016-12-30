@@ -23,7 +23,7 @@ class UsersController < AdminBaseController
   end
 
   def update
-    if @user.update_attributes(user_params)
+    if @user.update_without_password(user_params)
       redirect_to users_path, notice: 'User is successfully updated'
     else
       render :edit
@@ -38,7 +38,7 @@ class UsersController < AdminBaseController
   private
 
   def user_params
-    params.require(:user).permit(:email, :role, :password, :password_confirmation)
+    params.require(:user).permit(:name, :email, :role, :password, :password_confirmation)
   end
 
   def find_user
