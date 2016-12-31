@@ -28,12 +28,10 @@ class ClientsController < AdminBaseController
   def create
     @client = Client.new(client_params)
     authorize_user
-    respond_to do |format|
-      if @client.save
-        format.html { redirect_to @client, notice: 'Client was successfully created.' }
-      else
-        format.html { render :new }
-      end
+    if @client.save
+      redirect_to @client, notice: 'Client was successfully created.'
+    else
+       render :new
     end
   end
 
