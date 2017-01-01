@@ -35,7 +35,7 @@ class TroublesGrid
   filter(:range, :enum, select: Trouble::RANGE)
 
 
-  column(:client_name) do |object|
+  column(:client_name, html: true) do |object|
     link_to object.client_name, object.client
   end
   column(:client_id_number, html: true) do |object|
