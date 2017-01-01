@@ -5,7 +5,7 @@ class TroublesGrid
     Trouble.all
   end
 
-  filter(:aasm_state, :enum, select: Trouble::aasm.states)
+  filter(:aasm_state, :enum, select: Trouble::aasm.states, header: 'State')
 
   filter(:detail) do |value|
     self.where('detail iLike :detail', detail: "%#{value}%")
