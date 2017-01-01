@@ -1,12 +1,15 @@
 class TroublesController < ApplicationController
-  before_action :authenticate_user!, except: [:new, :create]
+  before_action :authenticate_user!, except: [:new, :create, :respond_client]
   before_action :find_client, only: [:create]
-  before_action :set_trouble, :authorize_user, only: [:show, :destroy, :assign, :work, :close]
+  before_action :set_trouble, only: [:show, :destroy, :assign, :work, :close, :respond_client]
+  before_action :authorize_user, only: [:show, :destroy, :assign, :work, :close]
 
   # GET /troubles
   # GET /troubles.json
   def index
-    @troubles = TroublesGrid.new(params[:troubles_grid])
+    @troubles = TroublesGrid.new(params[:troubles_grid]) do |scope|
+      policy_scope(scope)
+    end
     authorize @troubles.assets
   end
 
@@ -26,11 +29,14 @@ class TroublesController < ApplicationController
     @trouble = Trouble.new(trouble_params.merge(client: @client))
     respond_to do |format|
       if @trouble.save
-        format.html { redirect_to @trouble, notice: 'Trouble was successfully created.' }
+        format.html { redirect_to respond_client_trouble_path(@trouble), notice: ' Thanks you for report we will look into that trouble soon' }
       else
         format.html { render :new }
       end
     end
+  end
+
+  def respond_client
   end
 
   # DELETE /troubles/1
@@ -84,7 +90,7 @@ class TroublesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trouble_params
-      params.require(:trouble).permit(:range, :detail, :client_id_number)
+      params.require(:trouble).permit(:range, :detail, :client_id_number, :occur_date)
     end
 
     def assign_params

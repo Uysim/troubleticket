@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
   resources :troubles, except: [:edit, :update] do
+    member do
+      get :respond_client
+    end
     put :assign
     put :work
     put :close

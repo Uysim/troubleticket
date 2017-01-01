@@ -1,12 +1,4 @@
 = datagrid_form_for @users, url: users_path
 %h2 List of Users
-
-.table-responsive
-  %table.table.table-striped.table-bordered.table-hover
-    %thead
-      %tr
-
-    %tbody
-      = datagrid_table(@users)
-
-  = link_to '<i class="fa fa-plus"></i> New User'.html_safe, new_user_path, class: "btn btn-primary"
+= link_to '<i class="fa fa-plus"></i> New User'.html_safe, new_user_path, class: "btn btn-primary"
+= datagrid_table(@users)

@@ -4,7 +4,7 @@
   %p#notice= notice
   %p
     %strong Client:
-    = link_to @trouble.client_name, client_path(@trouble.client_id)
+    = @trouble.client_name
   %p
     %strong User:
     = @trouble.user_email
@@ -23,11 +23,3 @@
   %p
     %strong Occur Date:
     = @trouble.occur_date
-
-= render 'assign_form' if policy(@trouble).assign?
-= render 'work_link' if policy(@trouble).work?
-= render 'close_link' if policy(@trouble).close?
-
-= link_to troubles_path, class: 'btn btn-success' do
-  %i.fa.fa-arrow-left
-    %strong Back
