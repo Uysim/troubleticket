@@ -21,6 +21,8 @@ class Trouble < ApplicationRecord
   scope :in_working_state, -> { where(aasm_state: 'working') }
   scope :in_closed_state, -> { where(aasm_state: 'close') }
 
+  default_scope { order(occupancy: :desc) }
+
   aasm do
     state :open, initial: true
     state :assigned
