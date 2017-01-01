@@ -26,6 +26,7 @@ class TroublesGrid
   filter(:client_phone) do |value|
     self.joins(:client).merge(Client.with_phone(value))
   end
+
   filter(:occupancy)
 
   filter(:client_email) do |value|
@@ -34,6 +35,7 @@ class TroublesGrid
 
   filter(:range, :enum, select: Trouble::RANGE)
 
+  filter(:occur_date, :datetime, :range => true)
 
   column(:client_name, html: true) do |object|
     link_to object.client_name, object.client

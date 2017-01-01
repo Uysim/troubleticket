@@ -12,3 +12,8 @@
 .control-btn{
   margin-left: 15px;
 }
+.separator {
+  position: absolute;
+  left: 50%;
+  @include transform(translateX(-50%));
+}

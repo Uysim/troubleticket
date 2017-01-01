@@ -1,3 +1,6 @@
-= form.text_field(filter.name, from_options)
-%span{:class => "separator #{filter.type}"} -
-= form.text_field(filter.name, to_options)
+.row
+  .col-xs-6
+    = form.text_field(filter.name, from_options)
+  %span{:class => "separator #{filter.type}"} -
+  .col-xs-6
+    = form.text_field(filter.name, to_options)
