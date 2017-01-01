@@ -4,5 +4,6 @@ class PagesController < ApplicationController
   end
 
   def dashborad
+    @troubles = policy_scope(Trouble)
   end
 end

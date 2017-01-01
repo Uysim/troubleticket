@@ -7,7 +7,9 @@ class TroublesController < ApplicationController
   # GET /troubles
   # GET /troubles.json
   def index
-    @troubles = TroublesGrid.new(params[:troubles_grid])
+    @troubles = TroublesGrid.new(params[:troubles_grid]) do |scope|
+      policy_scope(scope)
+    end
     authorize @troubles.assets
   end
 
@@ -88,7 +90,7 @@ class TroublesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def trouble_params
-      params.require(:trouble).permit(:range, :detail, :client_id_number)
+      params.require(:trouble).permit(:range, :detail, :client_id_number, :occur_date)
     end
 
     def assign_params

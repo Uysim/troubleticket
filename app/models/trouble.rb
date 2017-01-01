@@ -16,7 +16,7 @@ class Trouble < ApplicationRecord
 
   RANGE = ['Internet Speed', 'Connection Stability', 'No Link', 'Others']
 
-  default_scope { order(occupancy: :desc) }
+  default_scope { order(occupancy: :asc) }
 
   aasm do
     state :open, initial: true
