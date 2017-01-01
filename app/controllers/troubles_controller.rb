@@ -1,5 +1,5 @@
 class TroublesController < ApplicationController
-  before_action :authenticate_user!, except: [:new, :create]
+  before_action :authenticate_user!, except: [:new, :create, :show_client]
   before_action :find_client, only: [:create]
   before_action :set_trouble, :authorize_user, only: [:show, :destroy, :assign, :work, :close]
 
@@ -26,11 +26,19 @@ class TroublesController < ApplicationController
     @trouble = Trouble.new(trouble_params.merge(client: @client))
     respond_to do |format|
       if @trouble.save
-        format.html { redirect_to @trouble, notice: 'Trouble was successfully created.' }
+        if current_user.present?
+          format.html { redirect_to @trouble, notice: 'Trouble was successfully created.' }
+        else
+          format.html { redirect_to show_client_trouble_path(@trouble), notice: ' Thanks you for report we will look into that trouble soon' }
+        end
       else
         format.html { render :new }
       end
     end
+  end
+
+  def show_client
+    @trouble = Trouble.find(params[:id])
   end
 
   # DELETE /troubles/1
