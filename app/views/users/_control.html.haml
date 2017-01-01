@@ -1,9 +1,9 @@
 - if policy(user).edit?
-  = link_to edit_user_path(user), class: 'btn btn-primary' do
+  = link_to edit_user_path(user), class: 'btn btn-primary btn-xs' do
     = fa_icon 'edit'
     Edit
   |
 - if policy(user).destroy?
-  = link_to user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
+  = link_to user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger btn-xs' do
     = fa_icon 'trash'
     Remove
