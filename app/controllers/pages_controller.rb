@@ -4,7 +4,6 @@ class PagesController < ApplicationController
   end
 
   def dashborad
-    @user_role = current_user.role
     @troubles = policy_scope(Trouble)
   end
 end

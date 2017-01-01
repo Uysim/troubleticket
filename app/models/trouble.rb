@@ -16,11 +16,6 @@ class Trouble < ApplicationRecord
 
   RANGE = ['Internet Speed', 'Connection Stability', 'No Link', 'Others']
 
-  scope :in_open_state, -> { where(aasm_state: 'open') }
-  scope :in_assigned_state, -> { where(aasm_state: 'assigned') }
-  scope :in_working_state, -> { where(aasm_state: 'working') }
-  scope :in_closed_state, -> { where(aasm_state: 'close') }
-
   default_scope { order(occupancy: :asc) }
 
   aasm do
