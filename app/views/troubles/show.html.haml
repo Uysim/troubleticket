@@ -4,7 +4,7 @@
   %p#notice= notice
   %p
     %strong Client:
-    = link_to "#{@trouble.client_name}", client_path(@trouble.client_id)
+    = link_to @trouble.client_name, client_path(@trouble.client_id)
   %p
     %strong User:
     = @trouble.user_email
