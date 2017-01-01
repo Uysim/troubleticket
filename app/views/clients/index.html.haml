@@ -1,8 +1,8 @@
 %p#notice= notice
 = datagrid_form_for @clients, url: clients_path
 %h1 Clients
-= datagrid_table(@clients)
-%br
 = link_to new_client_path, class: "btn btn-primary" do
   %i.fa.fa-plus
-    %strong Client
+  %strong Client
+%br
+= datagrid_table(@clients)
