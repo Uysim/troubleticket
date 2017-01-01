@@ -27,12 +27,10 @@ class TroublesController < ApplicationController
   # POST /troubles.json
   def create
     @trouble = Trouble.new(trouble_params.merge(client: @client))
-    respond_to do |format|
-      if @trouble.save
-        format.html { redirect_to respond_client_trouble_path(@trouble), notice: ' Thanks you for report we will look into that trouble soon' }
-      else
-        format.html { render :new }
-      end
+    if @trouble.save
+      redirect_to respond_client_trouble_path(@trouble), notice: ' Thanks you for report we will look into that trouble soon'
+    else
+      render :new
     end
   end
 
@@ -43,9 +41,7 @@ class TroublesController < ApplicationController
   # DELETE /troubles/1.json
   def destroy
     @trouble.destroy
-    respond_to do |format|
-      format.html { redirect_to troubles_url, notice: 'Trouble was successfully destroyed.' }
-    end
+    redirect_to troubles_url, notice: 'Trouble was successfully destroyed.'
   end
 
   def assign

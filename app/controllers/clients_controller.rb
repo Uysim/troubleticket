@@ -38,12 +38,10 @@ class ClientsController < AdminBaseController
   # PATCH/PUT /clients/1
   # PATCH/PUT /clients/1.json
   def update
-    respond_to do |format|
-      if @client.update(client_params)
-        format.html { redirect_to @client, notice: 'Client was successfully updated.' }
-      else
-        format.html { render :edit }
-      end
+    if @client.update(client_params)
+      redirect_to @client, notice: 'Client was successfully updated.'
+    else
+      render :edit
     end
   end
 
@@ -51,10 +49,7 @@ class ClientsController < AdminBaseController
   # DELETE /clients/1.json
   def destroy
     @client.destroy
-    respond_to do |format|
-      format.html { redirect_to clients_url, notice: 'Client was successfully destroyed.' }
-      format.json { head :no_content }
-    end
+    redirect_to clients_url, notice: 'Client was successfully destroyed.'
   end
 
   private

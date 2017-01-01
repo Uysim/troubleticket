@@ -33,8 +33,11 @@ class UsersController < AdminBaseController
   end
 
   def destroy
-    @user.destroy
-    redirect_to users_path, notice: 'User is successfully deleted'
+    if @user.destroy
+      redirect_to users_path, notice: 'User is successfully deleted'
+    else
+      redirect_to users_path, alert: @user.errors.full_messages.join(', ')
+    end
   end
 
   private
