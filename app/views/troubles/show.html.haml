@@ -24,9 +24,10 @@
     %strong Occur Time:
     = @trouble.occur_date
 
-= render 'assign_form' if policy(@trouble).assign?
-= render 'work_link' if policy(@trouble).work?
-= render 'close_link' if policy(@trouble).close?
+  = render 'assign_form' if policy(@trouble).assign?
+  = render 'work_link' if policy(@trouble).work?
+  = render 'close_link' if policy(@trouble).close?
+
 - if policy(:trouble).index?
   = link_to troubles_path, class: 'btn btn-success' do
     %i.fa.fa-arrow-left
