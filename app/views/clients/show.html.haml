@@ -1,5 +1,7 @@
 %h2.text-center Detail About Client
 .jumbotron
+  - if policy(:trouble).index?
+    = link_to 'All Trouble', troubles_path(:troubles_grid => { client_id_number: @client.id_number }), class: 'btn btn-primary'
   %p
     %strong Name:
     = @client.name
