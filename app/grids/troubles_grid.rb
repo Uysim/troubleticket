@@ -11,7 +11,7 @@ class TroublesGrid
     self.where('detail iLike :detail', detail: "%#{value}%")
   end
 
-  filter(:user_email, header: 'User Email') do |value|
+  filter(:user_email, header: 'Worker Email') do |value|
     self.joins(:user).merge(User.with_email(value))
   end
 
@@ -40,7 +40,7 @@ class TroublesGrid
   column(:detail) do |object|
     object.detail.to_s.truncate(30);
   end
-  column(:user_email)
+  column(:user_email, header: 'Worker')
   column(:client_name)
   column(:occupancy)
   column(:occur_date)

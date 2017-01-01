@@ -1,13 +1,8 @@
-
-%h2.text-center Detail About Trouble
+%h2.text-center Detail
 .jumbotron
-  %p#notice= notice
   %p
     %strong Client:
     = @trouble.client_name
-  %p
-    %strong User:
-    = @trouble.user_email
   %p
     %strong Range:
     = @trouble.range
@@ -18,8 +13,11 @@
     %strong Detail:
     = @trouble.detail
   %p
-    %strong Occupancy:
-    = @trouble.occupancy
-  %p
     %strong Occur Date:
     = @trouble.occur_date
+  %p
+    %strong Worker:
+    = @trouble.user_email
+  %p
+    %strong Occupancy:
+    = @trouble.occupancy
