@@ -6,7 +6,9 @@ class TroublesController < ApplicationController
   # GET /troubles
   # GET /troubles.json
   def index
-    @troubles = TroublesGrid.new(params[:troubles_grid])
+    @troubles = TroublesGrid.new(params[:troubles_grid]) do |scope|
+      policy_scope(scope)
+    end
     authorize @troubles.assets
   end
 
