@@ -27,7 +27,7 @@
 = render 'assign_form' if policy(@trouble).assign?
 = render 'work_link' if policy(@trouble).work?
 = render 'close_link' if policy(@trouble).close?
-
-= link_to troubles_path, class: 'btn btn-success' do
-  %i.fa.fa-arrow-left
-    %strong Back
+- if policy(:trouble).index?
+  = link_to troubles_path, class: 'btn btn-success' do
+    %i.fa.fa-arrow-left
+    Back

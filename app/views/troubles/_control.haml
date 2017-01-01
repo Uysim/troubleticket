@@ -1,5 +1,9 @@
-= link_to trouble, class: 'btn btn-primary' do
-  %i.fa.fa-eye View
+- if policy(trouble).show?
+  = link_to trouble, class: 'btn btn-primary' do
+    = fa_icon 'eye'
+    View
 
-= link_to trouble, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
-  %i.fa.fa-trash Remove
+- if policy(trouble).destroy?
+  = link_to trouble, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
+    = fa_icon 'trash'
+    Remove

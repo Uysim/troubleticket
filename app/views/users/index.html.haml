@@ -1,4 +1,8 @@
 = datagrid_form_for @users, url: users_path
 %h2 List of Users
-= link_to '<i class="fa fa-plus"></i> New User'.html_safe, new_user_path, class: "btn btn-primary"
+- if policy(:user).new?
+  = link_to new_user_path, class: "btn btn-primary" do
+    = fa_icon 'plus'
+    New User
+
 = datagrid_table(@users)
