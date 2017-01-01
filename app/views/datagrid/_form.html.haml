@@ -1,7 +1,7 @@
 .row
   = form_for grid, options do |f|
     - grid.filters.each do |filter|
-      .col-xs-12.col-sm-6.col-md-4.box
+      %dive{ class: filter.options[:range] == true ? '.col-xs-12 col-md-8 box' : '.col-xs-12 col-sm-6 col-md-4 box' }
         .datagrid-filter.filter.form-group
           = f.datagrid_label filter, class: 'control-label'
           = f.datagrid_filter filter, partials: options[:partials], class: "form-control"
