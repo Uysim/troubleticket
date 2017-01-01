@@ -1,7 +1,8 @@
 class TroublesController < ApplicationController
-  before_action :authenticate_user!, except: [:new, :create]
+  before_action :authenticate_user!, except: [:new, :create, :respond_client]
   before_action :find_client, only: [:create]
-  before_action :set_trouble, :authorize_user, only: [:show, :destroy, :assign, :work, :close]
+  before_action :set_trouble, only: [:show, :destroy, :assign, :work, :close, :respond_client]
+  before_action :authorize_user, only: [:show, :destroy, :assign, :work, :close]
 
   # GET /troubles
   # GET /troubles.json
@@ -26,11 +27,14 @@ class TroublesController < ApplicationController
     @trouble = Trouble.new(trouble_params.merge(client: @client))
     respond_to do |format|
       if @trouble.save
-        format.html { redirect_to @trouble, notice: 'Trouble was successfully created.' }
+        format.html { redirect_to respond_client_trouble_path(@trouble), notice: ' Thanks you for report we will look into that trouble soon' }
       else
         format.html { render :new }
       end
     end
+  end
+
+  def respond_client
   end
 
   # DELETE /troubles/1
