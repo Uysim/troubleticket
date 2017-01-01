@@ -1,8 +1,8 @@
 .row
   .col-sm-6
-    = link_to "#{@troubles.in_assigned_state.count} todo", troubles_path(:troubles_grid => {:aasm_state => "assigned"}), class: 'btn btn-primary'
+    = link_to "Assigned (#{@troubles.in_assigned_state.count})", troubles_path(:troubles_grid => {:aasm_state => 'assigned'}), class: 'btn btn-default btn-dashboard'
   .col-sm-6
-    = link_to "#{@troubles.in_working_state.count} in progressing", troubles_path(:troubles_grid => {:aasm_state => "working"}), class: 'btn btn-warning'
+    = link_to "Working (#{@troubles.in_working_state.count})", troubles_path(:troubles_grid => {:aasm_state => 'working'}), class: 'btn btn-default btn-dashboard'
 .row
-  .col-sm-12
-    = link_to "#{@troubles.in_closed_state.count} have been closed", troubles_path(:troubles_grid => {:aasm_state => "closed"}), class: 'btn btn-success'
+  .col-sm-6
+    = link_to "Closed (#{@troubles.in_closed_state.count})", troubles_path(:troubles_grid => {:aasm_state => 'closed'}), class: 'btn btn-default btn-dashboard'
