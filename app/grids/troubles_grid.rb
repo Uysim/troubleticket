@@ -34,16 +34,21 @@ class TroublesGrid
 
   filter(:range, :enum, select: Trouble::RANGE)
 
+
+  column(:client_name) do |object|
+    link_to object.client_name, object.client
+  end
+  column(:client_id_number, html: true) do |object|
+    link_to object.client.id_number, object.client
+  end
   column(:range)
   column(:aasm_state, header: 'State')
-
   column(:detail) do |object|
     object.detail.to_s.truncate(30);
   end
+  column(:occur_date, header: 'Occur Time')
   column(:user_email, header: 'Worker')
-  column(:client_name)
   column(:occupancy)
-  column(:occur_date)
 
   column(:control, header: '', html: true) do |object|
     render 'control', trouble: object

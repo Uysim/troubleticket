@@ -3,7 +3,7 @@
   = f.input :client_id_number
   = f.input :range, collection: Trouble::RANGE
   = f.input :detail
-  = f.input :occur_date, as: :string, input_html: { class: 'datetime-picker' }, wrapper_html: { class: 'datepicker-wrapper' }
+  = f.input :occur_date, label: 'Occur Time', as: :string, input_html: { class: 'datetime-picker' }, wrapper_html: { class: 'datepicker-wrapper' }
   .form-actions
     .order
       = f.button :submit, class: "btn btn-primary"
