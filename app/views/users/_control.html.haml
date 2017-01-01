@@ -1,3 +1,9 @@
-= link_to '<i class="fa fa-edit" ></i> Edit'.html_safe, edit_user_path(user), class: 'btn btn-primary'
-|
-= link_to '<i class="fa fa-trash"></i> Remove'.html_safe, user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger'
+- if policy(user).edit?
+  = link_to edit_user_path(user), class: 'btn btn-primary' do
+    = fa_icon 'edit'
+    Edit
+  |
+- if policy(user).destroy?
+  = link_to user_path(user), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
+    = fa_icon 'trash'
+    Remove

@@ -1,8 +1,11 @@
-= link_to client, class: 'btn btn-success' do
-  %i.fa.fa-eye Show
-|
-= link_to edit_client_path(client), class: 'btn btn-primary' do
-  %i.fa.fa-eye Edit
-|
-= link_to client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
-  %i.fa.fa-trash Remove
+- if policy(client).show?
+  = link_to client, class: 'btn btn-success' do
+    %i.fa.fa-eye Show
+  |
+- if policy(client).edit?
+  = link_to edit_client_path(client), class: 'btn btn-primary' do
+    %i.fa.fa-eye Edit
+  |
+- if policy(client).destroy?
+  = link_to client, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' do
+    %i.fa.fa-trash Remove

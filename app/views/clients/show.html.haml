@@ -16,11 +16,13 @@
   %p
     %strong Address:
     = @client.address
+- if policy(@client).index?
+  = link_to clients_path, class: 'btn btn-success' do
+    %i.fa.fa-arrow-left
+      %strong Back
+  |
 
-= link_to clients_path, class: 'btn btn-success' do
-  %i.fa.fa-arrow-left
-    %strong Back
-|
-= link_to edit_client_path(@client), class: 'btn btn-primary' do
-  %i.fa.fa-edit
-    %strong Edit
+- if policy(@client).edit?
+  = link_to edit_client_path(@client), class: 'btn btn-primary' do
+    %i.fa.fa-edit
+      %strong Edit
